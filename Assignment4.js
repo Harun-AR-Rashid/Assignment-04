@@ -1,4 +1,4 @@
-// #####Problem-01
+
 function calculateTax(income, expenses) {
     const benifit = income - expenses;
     const tax = benifit * 20 / 100;
@@ -9,13 +9,7 @@ function calculateTax(income, expenses) {
         return 'invalid Input';
     }
 }
-// const result = calculateTax(10000, 3000);
-// console.log(result);
 
-
-
-
-// ##Problem-02
 function sendNotification(email) {
     if (email.includes(email.split('@')) || email.split('@').length !== 2) {
         return 'Invalid Email'
@@ -24,12 +18,6 @@ function sendNotification(email) {
     const notification = username + ' ' + 'sent you an email from' + ' ' + domainName;
     return notification;
 }
-// let resut1 = sendNotification('farhan34@yahoo.com  ');
-// console.log(resut1);
-
-
-
-// #######Problem-03
 
 function checkDigitsInName(name) {
     if (typeof name !== 'string') {
@@ -43,26 +31,7 @@ function checkDigitsInName(name) {
     }
     return false;
 }
-// const result= checkDigitsInName('');
-// console.log(result);
 
-
-
-
-
-// const person = {
-//     name: 'harun',
-//     testScore: 45,
-//     schoolGrade: 25,
-//     isFFamily: true
-// }
-// const person1 = {
-//     name: 'halima',
-//     testScore: 35,
-//     schoolGrade: 30,
-//     isFFamily: false
-// }
-// ##########Problem-04
 function calculateFinalScore(obj) {
     if (typeof obj !== 'object' || typeof obj.name !== 'string' || typeof obj.testScore !== 'number' || typeof obj.schoolGrade !== 'number' || typeof obj.isFFamily !== 'boolean' || obj.testScore > 50 || obj.schoolGrade > 30) {
         return 'Invalid Input'
@@ -72,7 +41,7 @@ function calculateFinalScore(obj) {
     if (obj.isFFamily) {
         finalScore += 20;
     }
-    if(finalScore>=80){
+    if (finalScore >= 80) {
         return true;
     }
     else {
@@ -80,12 +49,20 @@ function calculateFinalScore(obj) {
     }
 
 }
-// const result = calculateFinalScore(person1);
-// console.log(result);
 
-
-// ######Problem-05
-
-function waitingTime(waitingTimes , serialNumber) {
-    
+function waitingTime(waitingTimes, serialNumber) {
+    if (!Array.isArray(waitingTimes) || typeof serialNumber !== 'number') {
+        return 'Invalid Input';
     }
+
+    const staySerialNum = serialNumber - 1;
+    const waitingSerialNum = staySerialNum - waitingTimes.length;
+    let sum = 0;
+    for (let i = 0; i < waitingTimes.length; i++) {
+        sum = sum + waitingTimes[i];
+    }
+    const avgTime = sum / waitingTimes.length;
+    const totalAvg = Math.round(avgTime);
+    const totalWaitingTime = waitingSerialNum * totalAvg;
+    return totalWaitingTime;
+}
